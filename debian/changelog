@@ -1,15 +1,104 @@
-bluez (5.42+ubports) xenial; urgency=medium
+bluez (5.46+ubports) xenial; urgency=medium
 
-  * No change rebuild for ubports xenial repo
+  * Import to ubports
 
- -- Dan Chapman <dan@ubports.com>  Sun, 07 Jan 2018 07:26:55 +0000
+ -- Dan Chapman <dan@ubports.com>  Sun, 07 Jan 2018 07:32:19 +0000
 
-bluez (5.41-0ubuntu1.1) xenial; urgency=medium
+bluez (5.46-0ubuntu4) bionic; urgency=medium
+
+  * No-change rebuild for libical soname change.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 09 Dec 2017 11:51:41 +0000
+
+bluez (5.46-0ubuntu3) artful; urgency=medium
+
+  * SECURITY UPDATE: information disclosure in service discovery
+    protocol daemon.
+    - debian/patches/CVE-2017-1000250.patch: validate continuation
+      request size before sending response.
+    - CVE-2017-1000250
+
+ -- Steve Beattie <sbeattie@ubuntu.com>  Tue, 12 Sep 2017 00:56:06 -0700
+
+bluez (5.46-0ubuntu2) artful; urgency=medium
+
+  [ Konrad Zapałowicz ]
+  * debian/patches/0001-device-Fix-crash-when-connecting-ATT-with-BR-EDR-onl.patch
+    - Fix crash when connecting ATT with BR/EDR-only device. Cherry-picked
+      from upstream.
+
+  [ Daniel van Vugt ]
+  * Delete unused patches.
+
+ -- Timo Aaltonen <tjaalton@debian.org>  Thu, 24 Aug 2017 16:11:20 +0300
+
+bluez (5.46-0ubuntu1) artful; urgency=medium
+
+  [ Konrad Zapałowicz ]
+  * New upstream version (lp: #1706598)
+
+  [ Daniel van Vugt ]
+  * debian/control:
+    - update the vcs information
+
+ -- Simon Fels <simon.fels@canonical.com>  Wed, 19 Jul 2017 11:46:21 +0200
+
+bluez (5.45-0ubuntu4) artful; urgency=medium
+
+  * Drop deprecated rfcomm.conf and upstart config. (LP: #1674680)
+
+ -- Dariusz Gadomski <dariusz.gadomski@canonical.com>  Mon, 07 Aug 2017 13:29:41 +0200
+
+bluez (5.45-0ubuntu3) artful; urgency=medium
+
+  * debian/bluez-obexd.links:
+    - include a symlink from obex.service to dbus-org.bluez.obex.service
+      which is the name used for dbus activation (lp: #1645631)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 24 Jul 2017 17:10:33 +0200
+
+bluez (5.45-0ubuntu2) artful; urgency=medium
+
+  * No-change rebuild against evolution-data-server 3.24
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 13 Jun 2017 13:55:31 -0400
+
+bluez (5.45-0ubuntu1) artful; urgency=medium
+
+  * New upstream version 5.45, and also:
+    - Refreshed 0004-obexd-enable-ebook-backend-conditionally.patch
+    - Refreshed migrate_scripts_python3.patch
+    - Explicitly enable 'deprecated' and 'testing' tools that upstream
+      doesn't build by default any more (but Debian/Ubuntu expects).
+
+ -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Tue, 06 Jun 2017 16:08:34 +0800
+
+bluez (5.43-0ubuntu1) zesty; urgency=medium
 
   [ Konrad Zapałowicz ]
   * New upstream version
 
-  [ Simon Fels ]
+ -- Simon Fels <simon.fels@canonical.com>  Tue, 24 Jan 2017 09:26:20 +0100
+
+bluez (5.41-0ubuntu3) yakkety; urgency=medium
+
+  * No-change rebuild for readline soname change.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Sep 2016 11:58:53 +0000
+
+bluez (5.41-0ubuntu2) yakkety; urgency=medium
+
+  * No-change rebuild against latest evolution-data-server
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 19 Aug 2016 22:39:37 -0400
+
+bluez (5.41-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream version
+
+ -- Konrad Zapałowicz <konrad.zapalowicz@canonial.com>  Tue, 21 Jun 2016 10:21:22 +0200
+
+bluez (5.40-0ubuntu2) UNRELEASED; urgency=medium
 
   * debian/50-bluetooth-hci-auto-poweron.rules:
     - Get rid of legacy udev rule to power on bluetooth controllers on
@@ -21,7 +110,14 @@ bluez (5.41-0ubuntu1.1) xenial; urgency=medium
       default. With changing this there should be no change in terms
       of functionality.
 
- -- Simon Fels <simon.fels@canonical.com>  Thu, 21 Jul 2016 18:46:49 +0200
+ -- Simon Fels <simon.fels@canonical.com>  Wed, 02 Mar 2016 08:20:11 +0100
+
+
+bluez (5.40-0ubuntu1) UNRELEASED; urgency=medium
+
+  * New upstream version
+
+ -- Konrad Zapałowicz <konrad.zapalowicz@canonial.com>  Tue, 21 Jun 2016 10:21:22 +0200
 
 bluez (5.37-0ubuntu5) xenial; urgency=medium
 
