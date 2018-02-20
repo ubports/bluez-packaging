@@ -1,3 +1,9 @@
+bluez (5.42+ubports1) xenial; urgency=medium
+
+  * No change rebuild to publish sources to ubports repo
+
+ -- Dan Chapman <dan@ubports.com>  Tue, 20 Feb 2018 09:53:01 +0000
+
 bluez (5.42+ubports) xenial; urgency=medium
 
   * No change rebuild for ubports xenial repo
