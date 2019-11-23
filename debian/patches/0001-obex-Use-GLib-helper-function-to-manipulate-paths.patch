@@ -9,11 +9,11 @@ relative paths aren't used by the agent.
  obexd/src/manager.c | 10 +++++-----
  1 file changed, 5 insertions(+), 5 deletions(-)
 
-Index: bluez-5.33/obexd/src/manager.c
-===================================================================
---- bluez-5.33.orig/obexd/src/manager.c
-+++ bluez-5.33/obexd/src/manager.c
-@@ -650,14 +650,14 @@ static void agent_reply(DBusPendingCall
+diff --git a/obexd/src/manager.c b/obexd/src/manager.c
+index cec8a39..f18896e 100644
+--- a/obexd/src/manager.c
++++ b/obexd/src/manager.c
+@@ -651,14 +651,14 @@ static void agent_reply(DBusPendingCall *call, void *user_data)
  				DBUS_TYPE_STRING, &name,
  				DBUS_TYPE_INVALID)) {
  		/* Splits folder and name */
@@ -33,3 +33,6 @@ Index: bluez-5.33/obexd/src/manager.c
  		}
  	}
  
+-- 
+1.8.4.2
+

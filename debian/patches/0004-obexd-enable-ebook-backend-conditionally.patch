@@ -13,8 +13,8 @@ switch. By default still the dummy backend is used.
 
 Index: bluez-5.37/Makefile.obexd
 ===================================================================
---- bluez-5.37.orig/Makefile.obexd
-+++ bluez-5.37/Makefile.obexd
+--- bluez-5.50.orig/Makefile.obexd
++++ bluez-5.50/Makefile.obexd
 @@ -39,8 +39,12 @@ obexd_builtin_sources += obexd/plugins/i
  obexd_builtin_modules += pbap
  obexd_builtin_sources += obexd/plugins/pbap.c \
@@ -85,7 +85,7 @@ Index: bluez-5.37/configure.ac
  fi
  AM_CONDITIONAL(OBEX, test "${enable_obex}" != "no")
  
-Index: bluez-5.37/obexd/plugins/phonebook-ebook.c
+Index: bluez-5.50/obexd/plugins/phonebook-ebook.c
 ===================================================================
 --- bluez-5.37.orig/obexd/plugins/phonebook-ebook.c
 +++ bluez-5.37/obexd/plugins/phonebook-ebook.c
