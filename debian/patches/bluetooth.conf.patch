@@ -3,10 +3,10 @@ Forwarded: not-needed
 Origin: vendor
 Author: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 
-Index: bluez-5.33/src/bluetooth.conf
-===================================================================
---- bluez-5.33.orig/src/bluetooth.conf
-+++ bluez-5.33/src/bluetooth.conf
+diff --git a/src/bluetooth.conf b/src/bluetooth.conf
+index 10d2d36..dea71b8 100644
+--- a/src/bluetooth.conf
++++ b/src/bluetooth.conf
 @@ -24,6 +24,11 @@
      <allow send_interface="org.freedesktop.DBus.Properties"/>
    </policy>
