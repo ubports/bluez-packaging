@@ -3,7 +3,12 @@ bluetooth.conf.patch
 0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
 change_path_of_hogsuspend.patch
-migrate_scripts_python3.patch
+agent-Assert-possible-infinite-loop.patch
+Fix-typo.patch
+main.conf-Add-more-details-Closes-904212.patch
+main.conf.patch
+org.bluez.obex.service.in.patch
+shared-gatt-client-Fix-segfault-after-PIN-entry.patch
 
 # This currently stays specific for Ubuntu
 0001-obexd-plugins-import-PBAP-ebook-support-from-upstrea.patch
