@@ -14,5 +14,5 @@ shared-gatt-client-Fix-segfault-after-PIN-entry.patch
 0001-obexd-plugins-import-PBAP-ebook-support-from-upstrea.patch
 0001-obexd-plugins-port-ebook-support-to-the-latest-EDS.patch
 0002-hostname-handle-chassis-type-handset.patch
-migrate_scripts_python3.patch
+
 
