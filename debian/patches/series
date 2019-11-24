@@ -16,7 +16,3 @@ shared-gatt-client-Fix-segfault-after-PIN-entry.patch
 0002-hostname-handle-chassis-type-handset.patch
 migrate_scripts_python3.patch
 
-# The following patches are submitted upstream and can be
-# dropped with one of the next releases
-0003-tools-mpris-proxy-allow-user-to-specify-different-mp.patch
-0004-obexd-enable-ebook-backend-conditionally.patch
