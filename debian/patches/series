@@ -1,6 +1,4 @@
-0001-work-around-Logitech-diNovo-Edge-keyboard-firmware-i.patch
-bluetooth.conf.patch
-main.conf.patch
+
 
 # This currently stays specific for Ubuntu
 
