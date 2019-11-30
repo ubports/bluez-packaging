@@ -34,7 +34,9 @@ override_dh_installinit:
 	dh_installinit -pbluez --name=bluetooth --restart-after-upgrade
 
 override_dh_install:
-	dh_install --list-missing
+	rm -rf  debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/libbluetooth.la
+	rm -rf  debian/tmp/usr/lib/$(DEB_HOST_MULTIARCH)/plugins/sixaxis.la
+
 
 override_dh_strip:
 	dh_strip -a --dbg-package=bluez-dbg libbluetooth3-dbg
