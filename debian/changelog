@@ -1,3 +1,10 @@
+bluez (5.42+ubports2) xenial; urgency=medium
+
+  * debian/rules: disable integration with EDS. We don't use EDS anymore as a
+    contacts backend.
+
+ -- Alberto Mardegan <mardy@users.sourceforge.net>  Tue, 11 Feb 2020 23:07:48 +0300
+
 bluez (5.42+ubports1) xenial; urgency=medium
 
   * No change rebuild to publish sources to ubports repo
