@@ -1,3 +1,15 @@
+bluez (5.42+ubports2) xenial; urgency=medium
+
+  * SECURITY UPDATE: information disclosure in service discovery
+    protocol daemon.
+    - debian/patches/CVE-2017-1000250.patch: validate continuation
+      request size before sending response.
+    - CVE-2017-1000250
+    - This patch is copied from bluez version 5.37-0ubuntu5.1 in
+      Ubuntu xenial-security.
+
+ -- Ratchanan Srirattanamet <ratchanan@ubports.com>  Fri, 28 Feb 2020 16:47:30 +0700
+
 bluez (5.42+ubports1) xenial; urgency=medium
 
   * No change rebuild to publish sources to ubports repo

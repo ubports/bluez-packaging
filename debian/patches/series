@@ -14,3 +14,6 @@ migrate_scripts_python3.patch
 # dropped with one of the next releases
 0003-tools-mpris-proxy-allow-user-to-specify-different-mp.patch
 0004-obexd-enable-ebook-backend-conditionally.patch
+
+# Secirity fix(es)
+CVE-2017-1000250.patch
