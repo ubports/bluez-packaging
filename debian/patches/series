@@ -17,3 +17,4 @@ migrate_scripts_python3.patch
 
 # Secirity fix(es)
 CVE-2017-1000250.patch
+broadcom-firmware.patch

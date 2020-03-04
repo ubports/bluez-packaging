@@ -1,0 +1,134 @@
+Index: b/tools/hciattach.c
+===================================================================
+--- a/tools/hciattach.c	2016-05-26 11:51:11.000000000 -0500
++++ b/tools/hciattach.c	2020-03-09 11:26:20.483219020 -0500
+@@ -62,6 +62,7 @@
+ 	char *bdaddr;
+ 	int  (*init) (int fd, struct uart_t *u, struct termios *ti);
+ 	int  (*post) (int fd, struct uart_t *u, struct termios *ti);
++	char *fwdir;
+ };
+ 
+ #define FLOW_CTL	0x0001
+@@ -275,7 +276,8 @@
+ 
+ static int bcm43xx(int fd, struct uart_t *u, struct termios *ti)
+ {
+-	return bcm43xx_init(fd, u->init_speed, u->speed, ti, u->bdaddr);
++	return bcm43xx_init(
++			fd, u->init_speed, u->speed, ti, u->bdaddr, u->fwdir);
+ }
+ 
+ static int read_check(int fd, void *buf, int count)
+@@ -1226,9 +1228,9 @@
+ {
+ 	printf("hciattach - HCI UART driver initialization utility\n");
+ 	printf("Usage:\n");
+-	printf("\thciattach [-n] [-p] [-b] [-r] [-t timeout] [-s initial_speed]"
+-			" <tty> <type | id> [speed] [flow|noflow]"
+-			" [sleep|nosleep] [bdaddr]\n");
++	printf("\thciattach [-n] [-p] [-b] [-r] [-f firmware_directory]"
++			" [-t timeout] [-s initial_speed] <tty> <type | id>"
++			" [speed] [flow|noflow] [sleep|nosleep] [bdaddr]\n");
+ 	printf("\thciattach -l\n");
+ }
+ 
+@@ -1244,12 +1246,13 @@
+ 	struct pollfd p;
+ 	sigset_t sigs;
+ 	char dev[PATH_MAX];
++	char *firmware_dir = NULL;
+ 
+ 	detach = 1;
+ 	printpid = 0;
+ 	raw = 0;
+ 
+-	while ((opt=getopt(argc, argv, "bnpt:s:lr")) != EOF) {
++	while ((opt=getopt(argc, argv, "bnpt:s:lrf:")) != EOF) {
+ 		switch(opt) {
+ 		case 'b':
+ 			send_break = 1;
+@@ -1282,6 +1285,10 @@
+ 			raw = 1;
+ 			break;
+ 
++		case 'f':
++			firmware_dir = optarg;
++			break;
++
+ 		default:
+ 			usage();
+ 			exit(1);
+@@ -1358,6 +1365,8 @@
+ 		exit(1);
+ 	}
+ 
++	u->fwdir = firmware_dir;
++
+ 	/* If user specified a initial speed, use that instead of
+ 	   the hardware's default */
+ 	if (init_speed)
+Index: b/tools/hciattach.h
+===================================================================
+--- a/tools/hciattach.h	2015-09-03 20:19:36.000000000 -0500
++++ b/tools/hciattach.h	2020-03-04 20:31:39.000000000 -0600
+@@ -65,4 +65,4 @@
+ int qualcomm_init(int fd, int speed, struct termios *ti, const char *bdaddr);
+ int intel_init(int fd, int init_speed, int *speed, struct termios *ti);
+ int bcm43xx_init(int fd, int def_speed, int speed, struct termios *ti,
+-		const char *bdaddr);
++		const char *bdaddr, const char *fwdir);
+Index: b/tools/hciattach_bcm43xx.c
+===================================================================
+--- a/tools/hciattach_bcm43xx.c	2015-03-11 05:01:57.000000000 -0500
++++ b/tools/hciattach_bcm43xx.c	2020-03-09 10:46:02.504403126 -0500
+@@ -35,6 +35,7 @@
+ #include <dirent.h>
+ #include <time.h>
+ #include <limits.h>
++#include <strings.h>
+ 
+ #include "lib/bluetooth.h"
+ #include "lib/hci.h"
+@@ -329,14 +330,14 @@
+ 			ret = bcm43xx_locate_patch(path, chip_name, location);
+ 			if (!ret)
+ 				break;
+-		} else if (!strncmp(chip_name, entry->d_name, strlen(chip_name))) {
++		} else if (!strncasecmp(chip_name, entry->d_name, strlen(chip_name))) {
+ 			unsigned int name_len = strlen(entry->d_name);
+ 			size_t curs_ext = name_len - sizeof(FW_EXT) + 1;
+ 
+ 			if (curs_ext > name_len)
+ 				break;
+ 
+-			if (strncmp(FW_EXT, &entry->d_name[curs_ext], sizeof(FW_EXT)))
++			if (strncasecmp(FW_EXT, &entry->d_name[curs_ext], sizeof(FW_EXT)))
+ 				break;
+ 
+ 			/* found */
+@@ -352,20 +353,22 @@
+ }
+ 
+ int bcm43xx_init(int fd, int def_speed, int speed, struct termios *ti,
+-		const char *bdaddr)
++		const char *bdaddr, const char *fwdir)
+ {
+ 	char chip_name[20];
+ 	char fw_path[PATH_MAX];
+ 
+ 	printf("bcm43xx_init\n");
+ 
++	if (!fwdir) fwdir = FIRMWARE_DIR;
++
+ 	if (bcm43xx_reset(fd))
+ 		return -1;
+ 
+ 	if (bcm43xx_read_local_name(fd, chip_name, sizeof(chip_name)))
+ 		return -1;
+ 
+-	if (bcm43xx_locate_patch(FIRMWARE_DIR, chip_name, fw_path)) {
++	if (bcm43xx_locate_patch(fwdir, chip_name, fw_path)) {
+ 		fprintf(stderr, "Patch not found, continue anyway\n");
+ 	} else {
+ 		if (bcm43xx_set_speed(fd, ti, speed))
