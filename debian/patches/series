@@ -14,5 +14,4 @@ change_path_of_hogsuspend.patch
 0003-tools-mpris-proxy-allow-user-to-specify-different-mp.patch
 
 # Secirity fix(es)
-CVE-2017-1000250.patch
 broadcom-firmware.patch
