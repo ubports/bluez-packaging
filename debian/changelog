@@ -1,8 +1,66 @@
-bluez (5.50-0ubuntu3) xenial; urgency=medium
+bluez (5.53-0ubports1) xenial; urgency=medium
 
-  * Import to UBports
+  * Import upstream release from focal
 
- -- Marius Gripsgard <marius@ubports.com>  Sat, 11 May 2019 15:32:36 +0200
+ -- Marius Gripsgard <marius@ubports.com>  Thu, 19 Mar 2020 20:22:09 +0100
+
+bluez (5.53-0ubuntu1) focal; urgency=medium
+
+  * New upstream release 5.53 (LP: #1864824)
+    - Fix issue with handling unregistration for advertisment.
+    - Fix issue with A2DP and handling recovering process.
+    - Fix issue with udpating input device information.
+    - Add support for loading blocked keys.
+
+ -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Wed, 26 Feb 2020 17:57:54 +0800
+
+bluez (5.52-0ubuntu2) focal; urgency=medium
+
+  * Don't build bluez-cups on i386.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 20 Dec 2019 00:01:27 -0600
+
+bluez (5.52-0ubuntu1) focal; urgency=medium
+
+  * New upstream release 5.52 (LP: #1854689):
+    - Fix issue with AVDTP session disconnect timeout handling.
+    - Mark media endpoint APIs as stable interfaces.
+
+ -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Thu, 12 Dec 2019 09:42:09 +0100
+
+bluez (5.51-0ubuntu2) focal; urgency=medium
+
+  * Make autopkgtests cross-test-friendly.
+
+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 07 Dec 2019 13:49:35 -0800
+
+bluez (5.51-0ubuntu1) focal; urgency=medium
+
+  * New upstream release 5.51 (LP: #1849641):
+    - Many fixes
+    - Improved Bluetooth Mesh support
+    - Support for the GATT Database Hash feature
+  * Refreshed patches and fixed conflicts:
+    - bluetooth.conf.patch
+    - 0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
+  * Drop upstreamed patches:
+    - tools-Fix-build-after-y2038-changes-in-glibc.patch
+
+ -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Thu, 24 Oct 2019 17:15:15 +0800
+
+bluez (5.50-0ubuntu4) eoan; urgency=medium
+
+  * d/p/lp1759836.patch: avoid endless udev events from new bind uevents
+    (LP: #1759836)
+
+ -- Dan Streetman <ddstreet@canonical.com>  Tue, 10 Sep 2019 17:22:37 -0400
+
+bluez (5.50-0ubuntu3) eoan; urgency=medium
+
+  * d/p/tools-Fix-build-after-y2038-changes-in-glibc.patch: fix build
+    failure due to linux header changes for y2038 bug.
+
+ -- Dan Streetman <ddstreet@canonical.com>  Wed, 28 Aug 2019 02:43:38 -0400
 
 bluez (5.50-0ubuntu2) disco; urgency=medium
 
