@@ -1,3 +1,29 @@
+bluez (5.42+ubports4) xenial; urgency=medium
+
+  * SECURITY UPDATE: buffer overflow in parse_line function
+    - debian/patches/CVE-2016-7837.patch: make sure we don't write past the
+      end of the array in tools/csr.c.
+    - CVE-2016-7837
+    - The patch is copied from version 5.37-0ubuntu5.3 in Ubuntu Xenial.
+      Note that our Bluez version is 5.41 despite the version number 5.42.
+  * SECURITY UPDATE: privilege escalation via improper access control
+    - debian/patches/CVE-2020-0556-pre1.patch: use .accept and .disconnect
+      instead of attio in profiles/input/hog.c, src/device.c, src/device.h.
+    - debian/patches/CVE-2020-0556-1.patch: HOGP must only accept data from
+      bonded devices in profiles/input/hog.c.
+    - debian/patches/CVE-2020-0556-2.patch: HID accepts bonded device
+      connections only in profiles/input/device.c, profiles/input/device.h,
+      profiles/input/input.conf, profiles/input/manager.c.
+    - debian/patches/CVE-2020-0556-3.patch: attempt to set security level
+      if not bonded in profiles/input/hog.c.
+    - debian/patches/CVE-2020-0556-4.patch: add LEAutoSecurity setting to
+      input.conf in profiles/input/device.h, profiles/input/hog.c,
+      profiles/input/input.conf, profiles/input/manager.c.
+    - CVE-2020-0556
+    - The patch is copied from version 5.37-0ubuntu5.3 in Ubuntu Xenial.
+
+ -- Ratchanan Srirattanamet <ratchanan@ubports.com>  Thu, 16 Apr 2020 20:39:21 +0700
+
 bluez (5.42+ubports3) xenial; urgency=medium
 
   * Make firmware loading directory editable for bcm43xx

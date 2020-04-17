@@ -17,4 +17,12 @@ migrate_scripts_python3.patch
 
 # Secirity fix(es)
 CVE-2017-1000250.patch
+CVE-2016-7837.patch
+CVE-2020-0556-pre1.patch
+CVE-2020-0556-1.patch
+CVE-2020-0556-2.patch
+CVE-2020-0556-3.patch
+CVE-2020-0556-4.patch
+
+# UBports-specific patch
 broadcom-firmware.patch
