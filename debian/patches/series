@@ -26,3 +26,4 @@ CVE-2020-0556-4.patch
 
 # UBports-specific patch
 broadcom-firmware.patch
+fake-dbus-activation.patch

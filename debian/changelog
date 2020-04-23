@@ -1,3 +1,11 @@
+bluez (5.42+ubports5) xenial; urgency=medium
+
+  * Fake the success of D-Bus activation, so that oFono HFP profile
+    registration works properly.
+    - d/patches/fake-dbus-activation.patch
+
+ -- Ratchanan Srirattanamet <ratchanan@ubports.com>  Fri, 24 Apr 2020 02:54:51 +0700
+
 bluez (5.42+ubports4) xenial; urgency=medium
 
   * SECURITY UPDATE: buffer overflow in parse_line function
