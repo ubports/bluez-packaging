@@ -1,0 +1,25 @@
+Description: Fake the success of D-Bus activation
+ oFono races with bluetoothd startup to register HFP profile. Normally,
+ this would trigger D-Bus activation. However, D-Bus activation does not
+ work properly on non-systemd system, and, in Ubuntu Touch, we needs the
+ proper startup sequence to initialize Bluetooth properly.
+ .
+ We don't want HFP profile registration to fail, because that means
+ we'll fallback to HSP profile in PulseAudio with less capability. Thus,
+ the solution is to fake the activation success to D-Bus, then wait for
+ bluetoothd to be started by Upstart. This works because D-Bus waits for
+ quite some times after it successfuly activate a service.
+Author: Ratchanan Srirattanamet <ratchanan@ubports.com>
+Forwarded: not-needed
+Last-Update: 2020-04-24
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/org.bluez.service
++++ b/src/org.bluez.service
+@@ -1,5 +1,5 @@
+ [D-BUS Service]
+ Name=org.bluez
+-Exec=/bin/false
++Exec=/bin/true
+ User=root
+ SystemdService=dbus-org.bluez.service
