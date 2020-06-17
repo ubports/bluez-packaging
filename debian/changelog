@@ -1,3 +1,9 @@
+bluez (5.53+ubports3) xenial; urgency=medium
+
+  * Bluez 5.53
+
+ -- Nathan Giovannini <nathan95@live.it> Mon, 15 Jun 2020 11:01:52 -0200
+
 bluez (5.42+ubports3) xenial; urgency=medium
 
   * Make firmware loading directory editable for bcm43xx
