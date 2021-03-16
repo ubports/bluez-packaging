@@ -1,3 +1,9 @@
+bluez (5.56-0ubports1) UNRELEASED; urgency=medium
+
+  * Try out the newest upstream version
+
+ -- Florian Leeber <florian@ubports.com>  Tue, 16 Mar 2021 22:54:51 +0700
+
 bluez (5.42+ubports5) xenial; urgency=medium
 
   * Fake the success of D-Bus activation, so that oFono HFP profile
