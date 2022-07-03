@@ -1,0 +1,169 @@
+Do not just try 0000 as a default pairing code, but a few others
+ Taken from https://github.com/nokia/rcm-bluez/blob/master/client/bluez-5.43/plugins/autopair.c
+ Since the autopair plugin is so keen on intercepting certain device classes and also not letting
+ the user try to enter a PIN at all, give it a few more default codes to try out. Also add some
+ new devices that do not have a display and try 0000 for those (see below)
+ Also has a security update for the random number generator
+Index: bluez-packaging/plugins/autopair.c
+===================================================================
+--- bluez-packaging.orig/plugins/autopair.c
++++ bluez-packaging/plugins/autopair.c
+@@ -41,6 +41,7 @@
+ #include "src/device.h"
+ #include "src/log.h"
+ #include "src/storage.h"
++#include "src/shared/util.h"
+ 
+ /*
+  * Plugin to handle automatic pairing of devices with reduced user
+@@ -60,13 +61,24 @@ static ssize_t autopair_pincb(struct btd
+ {
+ 	char addr[18];
+ 	char pinstr[7];
++	char name[25];
+ 	uint32_t class;
++	uint32_t val;
+ 
+ 	ba2str(device_get_address(device), addr);
+ 
+ 	class = btd_device_get_class(device);
+ 
+-	DBG("device %s 0x%x", addr, class);
++	device_get_name(device, name, sizeof(name));
++
++	DBG("device '%s' (%s) class: 0x%x vid/pid: 0x%X/0x%X",
++		name, addr, class,
++		btd_device_get_vendor (device),
++		btd_device_get_product (device));
++
++	/* The iCade shouldn't use random PINs like normal keyboards */
++	if (strstr(name, "iCade") != NULL)
++		return 0;
+ 
+ 	/* This is a class-based pincode guesser. Ignore devices with an
+ 	 * unknown class.
+@@ -82,15 +94,37 @@ static ssize_t autopair_pincb(struct btd
+ 		case 0x06:		/* Headphones */
+ 		case 0x07:		/* Portable Audio */
+ 		case 0x0a:		/* HiFi Audio Device */
+-			if (attempt > 1)
+-				return 0;
+-			memcpy(pinbuf, "0000", 4);
+-			return 4;
++			{
++				const char *pincodes[] = {
++					"0000",
++					"1234",
++					"1111"
++				};
++				const char *pincode;
++
++				if (attempt > G_N_ELEMENTS(pincodes))
++					return 0;
++				pincode = pincodes[attempt - 1];
++				memcpy(pinbuf, pincode, strlen(pincode));
++				return strlen(pincode);
++			}
+ 		}
+ 		break;
+ 
+ 	case 0x05:		/* Peripheral */
+ 		switch ((class & 0xc0) >> 6) {
++		case 0x00:
++			switch ((class & 0x1e) >> 2) {
++			case 0x01:	/* Joystick */
++			case 0x02:	/* Gamepad */
++			case 0x03:	/* Remote Control */
++				if (attempt > 1)
++					return 0;
++				memcpy(pinbuf, "0000", 4);
++				return 4;
++			}
++
++			break;
+ 		case 0x01:		/* Keyboard */
+ 		case 0x03:		/* Combo keyboard/pointing device */
+ 			/* For keyboards rejecting the first random code
+@@ -110,8 +144,12 @@ static ssize_t autopair_pincb(struct btd
+ 			if (attempt >= 4)
+ 				return 0;
+ 
+-			snprintf(pinstr, sizeof(pinstr), "%06d",
+-						rand() % 1000000);
++			if (util_getrandom(&val, sizeof(val), 0) < 0) {
++				error("Failed to get a random pincode");
++				return 0;
++			}
++			snprintf(pinstr, sizeof(pinstr), "%06u",
++						val % 1000000);
+ 			*display = true;
+ 			memcpy(pinbuf, pinstr, 6);
+ 			return 6;
+@@ -194,3 +232,4 @@ static void autopair_exit(void)
+ 
+ BLUETOOTH_PLUGIN_DEFINE(autopair, VERSION, BLUETOOTH_PLUGIN_PRIORITY_DEFAULT,
+ 						autopair_init, autopair_exit)
++
+Index: bluez-packaging/src/shared/util.c
+===================================================================
+--- bluez-packaging.orig/src/shared/util.c
++++ bluez-packaging/src/shared/util.c
+@@ -25,6 +25,7 @@
+ #include <config.h>
+ #endif
+ 
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <ctype.h>
+ #include <stdarg.h>
+@@ -35,6 +36,10 @@
+ #include <limits.h>
+ #include <string.h>
+ 
++#ifdef HAVE_SYS_RANDOM_H
++#include <sys/random.h>
++#endif
++
+ #include "src/shared/util.h"
+ 
+ void *btd_malloc(size_t size)
+@@ -124,6 +129,26 @@ unsigned char util_get_dt(const char *pa
+ 	return DT_UNKNOWN;
+ }
+ 
++/* Helper for getting a random in case getrandom unavailable (glibc < 2.25) */
++ssize_t util_getrandom(void *buf, size_t buflen, unsigned int flags)
++{
++#ifdef HAVE_GETRANDOM
++	return getrandom(buf, buflen, flags);
++#else
++	int fd;
++	ssize_t bytes;
++
++	fd = open("/dev/urandom", O_CLOEXEC);
++	if (fd < 0)
++		return -1;
++
++	bytes = read(fd, buf, buflen);
++	close(fd);
++
++	return bytes;
++#endif
++}
++
+ /* Helpers for bitfield operations */
+ 
+ /* Find unique id in range from 1 to max but no bigger then
+Index: bluez-packaging/src/shared/util.h
+===================================================================
+--- bluez-packaging.orig/src/shared/util.h
++++ bluez-packaging/src/shared/util.h
+@@ -105,6 +105,8 @@ void util_hexdump(const char dir, const
+ 
+ unsigned char util_get_dt(const char *parent, const char *name);
+ 
++ssize_t util_getrandom(void *buf, size_t buflen, unsigned int flags);
++
+ uint8_t util_get_uid(unsigned int *bitmap, uint8_t max);
+ void util_clear_uid(unsigned int *bitmap, uint8_t id);
+ 
