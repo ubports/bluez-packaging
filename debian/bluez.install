@@ -2,7 +2,7 @@ debian/main.conf etc/bluetooth
 profiles/input/input.conf etc/bluetooth
 # profiles/audio/audio.conf etc/bluetooth
 profiles/network/network.conf etc/bluetooth
-profiles/proximity/proximity.conf etc/bluetooth
+# profiles/proximity/proximity.conf etc/bluetooth
 usr/lib/bluetooth/bluetoothd
 usr/bin/bluetoothctl
 usr/bin/bccmd
@@ -29,16 +29,4 @@ attrib/gatttool usr/bin
 lib/systemd/system/bluetooth.service
 etc/dbus-1/system.d/bluetooth.conf
 usr/share/dbus-1/system-services/org.bluez.service
-usr/share/man/man1/sdptool.1
-usr/share/man/man1/bccmd.1
-usr/share/man/man1/hciattach.1
-usr/share/man/man1/hciconfig.1
-usr/share/man/man1/hcitool.1
-usr/share/man/man1/ciptool.1
-usr/share/man/man1/rfcomm.1
-usr/share/man/man1/rctest.1
-usr/share/man/man1/l2ping.1
-usr/share/man/man1/hid2hci.1
-usr/share/man/man1/btattach.1
-usr/share/man/man8/bluetoothd.8
 debian/source_bluez.py usr/share/apport/package-hooks

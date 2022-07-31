@@ -21,7 +21,9 @@ CONFIGURE_FLAGS := \
 	--enable-systemd \
 	--enable-threads \
 	--enable-sixaxis \
-	--enable-experimental
+	--enable-experimental \
+	--enable-deprecated \
+	--enable-testing
 
 %:
 	dh $@ --with systemd,autoreconf
