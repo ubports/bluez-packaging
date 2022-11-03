@@ -19,6 +19,7 @@ Build-Depends: debhelper (>= 9),
 	check (>= 0.9.8-1.1),
 	systemd,
 	dh-systemd (>= 1.5),
+	libebook1.2-dev (>= 3.12)
 Vcs-Git: https://git.launchpad.net/~bluetooth/bluez
 Vcs-Browser: https://git.launchpad.net/~bluetooth/bluez
 Homepage: http://www.bluez.org

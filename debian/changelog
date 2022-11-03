@@ -1,3 +1,9 @@
+bluez (5.53+ubports5+really5.53-0ubports3) xenial; urgency=medium
+
+  * Revert new contact backend
+
+ -- Lionel Duboeuf <lduboeuf@ouvaton.org>  Thu, 03 Nov 2022 01:11:47 +0100
+
 bluez (5.53+ubports5+really5.53-0ubports2) xenial; urgency=medium
 
   * plugins/autopair.c: Do not try to autopair with Nissan Connect carkits
