@@ -1,11 +1,11 @@
-bluez (5.53+ubports5+really5.53-0ubports1) xenial; urgency=medium
+bluez (5.42+ubports5+really5.41-0ubports1) xenial; urgency=medium
 
   * debian/rules: disable integration with EDS. We don't use EDS anymore as a
     contacts backend.
 
  -- Alberto Mardegan <mardy@users.sourceforge.net>  Mon, 24 May 2021 22:08:47 +0300
 
-bluez (5.53+ubports5) xenial; urgency=medium
+bluez (5.42+ubports5) xenial; urgency=medium
 
   * Fake the success of D-Bus activation, so that oFono HFP profile
     registration works properly.
@@ -13,7 +13,7 @@ bluez (5.53+ubports5) xenial; urgency=medium
 
  -- Ratchanan Srirattanamet <ratchanan@ubports.com>  Fri, 24 Apr 2020 02:54:51 +0700
 
-bluez (5.53+ubports4) xenial; urgency=medium
+bluez (5.42+ubports4) xenial; urgency=medium
 
   * SECURITY UPDATE: buffer overflow in parse_line function
     - debian/patches/CVE-2016-7837.patch: make sure we don't write past the
@@ -39,13 +39,13 @@ bluez (5.53+ubports4) xenial; urgency=medium
 
  -- Ratchanan Srirattanamet <ratchanan@ubports.com>  Thu, 16 Apr 2020 20:39:21 +0700
 
-bluez (5.53+ubports3) xenial; urgency=medium
+bluez (5.42+ubports3) xenial; urgency=medium
 
   * Make firmware loading directory editable for bcm43xx
 
  -- Dalton Durst <dalton@ubports.com>  Mon, 09 Mar 2020 11:01:52 -0500
 
-bluez (5.53+ubports2) xenial; urgency=medium
+bluez (5.42+ubports2) xenial; urgency=medium
 
   * SECURITY UPDATE: information disclosure in service discovery
     protocol daemon.
@@ -57,259 +57,24 @@ bluez (5.53+ubports2) xenial; urgency=medium
 
  -- Ratchanan Srirattanamet <ratchanan@ubports.com>  Fri, 28 Feb 2020 16:47:30 +0700
 
-bluez (5.53+ubports1) xenial; urgency=medium
+bluez (5.42+ubports1) xenial; urgency=medium
 
-  * Import to UBports
+  * No change rebuild to publish sources to ubports repo
 
- -- Marius Gripsgard <marius@ubports.com>  Thu, 19 Mar 2020 20:22:09 +0100
+ -- Dan Chapman <dan@ubports.com>  Tue, 20 Feb 2018 09:53:01 +0000
 
-bluez (5.53-0ubuntu1) focal; urgency=medium
+bluez (5.42+ubports) xenial; urgency=medium
 
-  * New upstream release 5.53 (LP: #1864824)
-    - Fix issue with handling unregistration for advertisment.
-    - Fix issue with A2DP and handling recovering process.
-    - Fix issue with udpating input device information.
-    - Add support for loading blocked keys.
+  * No change rebuild for ubports xenial repo
 
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Wed, 26 Feb 2020 17:57:54 +0800
+ -- Dan Chapman <dan@ubports.com>  Sun, 07 Jan 2018 07:26:55 +0000
 
-bluez (5.52-0ubuntu2) focal; urgency=medium
-
-  * Don't build bluez-cups on i386.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 20 Dec 2019 00:01:27 -0600
-
-bluez (5.52-0ubuntu1) focal; urgency=medium
-
-  * New upstream release 5.52 (LP: #1854689):
-    - Fix issue with AVDTP session disconnect timeout handling.
-    - Mark media endpoint APIs as stable interfaces.
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Thu, 12 Dec 2019 09:42:09 +0100
-
-bluez (5.51-0ubuntu2) focal; urgency=medium
-
-  * Make autopkgtests cross-test-friendly.
-
- -- Steve Langasek <steve.langasek@ubuntu.com>  Sat, 07 Dec 2019 13:49:35 -0800
-
-bluez (5.51-0ubuntu1) focal; urgency=medium
-
-  * New upstream release 5.51 (LP: #1849641):
-    - Many fixes
-    - Improved Bluetooth Mesh support
-    - Support for the GATT Database Hash feature
-  * Refreshed patches and fixed conflicts:
-    - bluetooth.conf.patch
-    - 0001-Allow-using-obexd-without-systemd-in-the-user-sessio.patch
-  * Drop upstreamed patches:
-    - tools-Fix-build-after-y2038-changes-in-glibc.patch
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Thu, 24 Oct 2019 17:15:15 +0800
-
-bluez (5.50-0ubuntu4) eoan; urgency=medium
-
-  * d/p/lp1759836.patch: avoid endless udev events from new bind uevents
-    (LP: #1759836)
-
- -- Dan Streetman <ddstreet@canonical.com>  Tue, 10 Sep 2019 17:22:37 -0400
-
-bluez (5.50-0ubuntu3) eoan; urgency=medium
-
-  * d/p/tools-Fix-build-after-y2038-changes-in-glibc.patch: fix build
-    failure due to linux header changes for y2038 bug.
-
- -- Dan Streetman <ddstreet@canonical.com>  Wed, 28 Aug 2019 02:43:38 -0400
-
-bluez (5.50-0ubuntu2) disco; urgency=medium
-
-  * No-change rebuild for readline soname change.
-
- -- Matthias Klose <doko@ubuntu.com>  Mon, 14 Jan 2019 19:58:14 +0000
-
-bluez (5.50-0ubuntu1) cosmic; urgency=medium
-
-  * New upstream release 5.50:
-    - Fix issue with GATT and reading long values.
-    - Fix issue with GATT and reading multiple includes.
-    - Fix issue with GATT and service changes when offline.
-    - Fix issue with handling secondary service discovery.
-    - Fix issue with handling persistency of CCC values.
-    - Fix issue with handling Mesh session on disconnection.
-    - Fix issue with handling Mesh proxy PDU SAR message length.
-    - Fix issue with handling Mesh default heartbeat TTL value.
-    - Add support for Mesh node-reset operation handling.
-    - Add support for GATT authorization request handling.
-    - Add support for GATT minimum key size requirements.
-    - Add support for GATT server and included services.
-    - Add support for handling additional advertising data.
-    - Add support for handling separate discoverable state.
-    - Add support for enabling HFP version 1.7 features.
-    - Add support for dedicated Bluetooth logging daemon.
-  * Refreshed debian/patches to work with 5.50 and apply cleanly.
-  * Fixed lintian errors:
-    - dpkg-maintscript-helper missing in postinst and postrm.
-    - Synchronized (some) man pages from Debian.
-  * New upstream release 5.49 (LP: #1759961):
-    - Fix issue with configuring discoverable advertising flag.
-    - Fix issue with bearer selection and single mode controllers.
-    - Fix issue with Connect and ConnectProfile returning in progress.
-    - Fix issue with missing Paired property change when not bonded.
-    - Fix issue with storage for controllers without public address.
-    - Fix issue with handling AVCTP disconnecting the channel queue.
-    - Fix issue with not clearing connectable setting on power off.
-    - Fix issue with creating multiple mgmt socket instances.
-    - Fix issue with GATT server and BR/EDR only devices.
-    - Fix issue with InterfaceAdded event ordering. (LP: #1759628)
-    - Add support for generic ConnectDevice method call.
-    - Add support for Mesh heartbeat client functionality.
-  * Drop upstreamed patch:
-    - fix-lp1750308-upstream-commit-1bf03369.patch
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Wed, 06 Jun 2018 16:26:40 +0800
-
-bluez (5.48-0ubuntu3) bionic; urgency=medium
-
-  * Add fix-lp1750308-upstream-commit-1bf03369.patch to fix command piping
-    regression (mostly affecting python-dbusmock). (LP: #1750308)
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Wed, 21 Feb 2018 15:08:50 +0800
-
-bluez (5.48-0ubuntu2) bionic; urgency=medium
-
-  * debian/control: Don't mention artful in Vcs fields
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Mon, 05 Feb 2018 13:36:28 +0800
-
-bluez (5.48-0ubuntu1) bionic; urgency=medium
-
-  * Drop upstreamed patch:
-    - 0001-device-Fix-crash-when-connecting-ATT-with-BR-EDR-onl.patch
-  * New upstream release 5.48:
-    - Fix issue with subscriptions for unpaired devices.
-    - Fix issue with handling A2DP and no available SEP.
-    - Fix issue with handling AVCTP change path support.
-    - Fix issue with handling AVCTP browsing channel.
-    - Fix issue with handling AVCTP passthrough PDUs.
-    - Fix issue with handling detaching of controller.
-    - Fix issue with handling start discovery results.
-    - Fix issue with handling non-connectable devices.
-    - Fix issue with handling unused parameter in WriteValue.
-    - Add support for service side AcquireWrite and AcquireNotify.
-    - Add support for providing address type information.
-    - Add support for cable based authentication and pairing.
-    - Add support for Bluetooth Low-Energy battery service.
-    - Add support for BTP client for qualification testing.
-    - Add support for additional Mesh control functionality.
-    - Mark advertising manager APIs as stable interfaces.
-  * New upstream release 5.47:
-    - Fix issue with handling AcquireNotify registration.
-    - Fix issue with handling support for reconnection interval.
-    - Fix issue with handling A2DP transport and accepting streams.
-    - Fix issue with fallback from BR/EDR to LE bearer handling.
-    - Add support for appearance and local name advertising data.
-    - Add support for retrieving the supported discovery filters.
-    - Add support for decoding Bluetooth 5.0 commands and events.
-    - Add support for decoding Bluetooth Mesh advertising bearer.
-    - Add support for Bluetooth Mesh control application.
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Mon, 05 Feb 2018 13:08:06 +0800
-
-bluez (5.46-0ubuntu4) bionic; urgency=medium
-
-  * No-change rebuild for libical soname change.
-
- -- Matthias Klose <doko@ubuntu.com>  Sat, 09 Dec 2017 11:51:41 +0000
-
-bluez (5.46-0ubuntu3) artful; urgency=medium
-
-  * SECURITY UPDATE: information disclosure in service discovery
-    protocol daemon.
-    - debian/patches/CVE-2017-1000250.patch: validate continuation
-      request size before sending response.
-    - CVE-2017-1000250
-
- -- Steve Beattie <sbeattie@ubuntu.com>  Tue, 12 Sep 2017 00:56:06 -0700
-
-bluez (5.46-0ubuntu2) artful; urgency=medium
-
-  [ Konrad Zapałowicz ]
-  * debian/patches/0001-device-Fix-crash-when-connecting-ATT-with-BR-EDR-onl.patch
-    - Fix crash when connecting ATT with BR/EDR-only device. Cherry-picked
-      from upstream.
-
-  [ Daniel van Vugt ]
-  * Delete unused patches.
-
- -- Timo Aaltonen <tjaalton@debian.org>  Thu, 24 Aug 2017 16:11:20 +0300
-
-bluez (5.46-0ubuntu1) artful; urgency=medium
-
-  [ Konrad Zapałowicz ]
-  * New upstream version (lp: #1706598)
-
-  [ Daniel van Vugt ]
-  * debian/control:
-    - update the vcs information
-
- -- Simon Fels <simon.fels@canonical.com>  Wed, 19 Jul 2017 11:46:21 +0200
-
-bluez (5.45-0ubuntu4) artful; urgency=medium
-
-  * Drop deprecated rfcomm.conf and upstart config. (LP: #1674680)
-
- -- Dariusz Gadomski <dariusz.gadomski@canonical.com>  Mon, 07 Aug 2017 13:29:41 +0200
-
-bluez (5.45-0ubuntu3) artful; urgency=medium
-
-  * debian/bluez-obexd.links:
-    - include a symlink from obex.service to dbus-org.bluez.obex.service
-      which is the name used for dbus activation (lp: #1645631)
-
- -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 24 Jul 2017 17:10:33 +0200
-
-bluez (5.45-0ubuntu2) artful; urgency=medium
-
-  * No-change rebuild against evolution-data-server 3.24
-
- -- Jeremy Bicha <jbicha@ubuntu.com>  Tue, 13 Jun 2017 13:55:31 -0400
-
-bluez (5.45-0ubuntu1) artful; urgency=medium
-
-  * New upstream version 5.45, and also:
-    - Refreshed 0004-obexd-enable-ebook-backend-conditionally.patch
-    - Refreshed migrate_scripts_python3.patch
-    - Explicitly enable 'deprecated' and 'testing' tools that upstream
-      doesn't build by default any more (but Debian/Ubuntu expects).
-
- -- Daniel van Vugt <daniel.van.vugt@canonical.com>  Tue, 06 Jun 2017 16:08:34 +0800
-
-bluez (5.43-0ubuntu1) zesty; urgency=medium
+bluez (5.41-0ubuntu1.1) xenial; urgency=medium
 
   [ Konrad Zapałowicz ]
   * New upstream version
 
- -- Simon Fels <simon.fels@canonical.com>  Tue, 24 Jan 2017 09:26:20 +0100
-
-bluez (5.41-0ubuntu3) yakkety; urgency=medium
-
-  * No-change rebuild for readline soname change.
-
- -- Matthias Klose <doko@ubuntu.com>  Sat, 17 Sep 2016 11:58:53 +0000
-
-bluez (5.41-0ubuntu2) yakkety; urgency=medium
-
-  * No-change rebuild against latest evolution-data-server
-
- -- Jeremy Bicha <jbicha@ubuntu.com>  Fri, 19 Aug 2016 22:39:37 -0400
-
-bluez (5.41-0ubuntu1) yakkety; urgency=medium
-
-  * New upstream version
-
- -- Konrad Zapałowicz <konrad.zapalowicz@canonial.com>  Tue, 21 Jun 2016 10:21:22 +0200
-
-bluez (5.40-0ubuntu2) UNRELEASED; urgency=medium
+  [ Simon Fels ]
 
   * debian/50-bluetooth-hci-auto-poweron.rules:
     - Get rid of legacy udev rule to power on bluetooth controllers on
@@ -321,14 +86,7 @@ bluez (5.40-0ubuntu2) UNRELEASED; urgency=medium
       default. With changing this there should be no change in terms
       of functionality.
 
- -- Simon Fels <simon.fels@canonical.com>  Wed, 02 Mar 2016 08:20:11 +0100
-
-
-bluez (5.40-0ubuntu1) UNRELEASED; urgency=medium
-
-  * New upstream version
-
- -- Konrad Zapałowicz <konrad.zapalowicz@canonial.com>  Tue, 21 Jun 2016 10:21:22 +0200
+ -- Simon Fels <simon.fels@canonical.com>  Thu, 21 Jul 2016 18:46:49 +0200
 
 bluez (5.37-0ubuntu5) xenial; urgency=medium
 
