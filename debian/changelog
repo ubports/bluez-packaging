@@ -1,10 +1,3 @@
-bluez (5.42+ubports5+really5.41-0ubports1) xenial; urgency=medium
-
-  * debian/rules: disable integration with EDS. We don't use EDS anymore as a
-    contacts backend.
-
- -- Alberto Mardegan <mardy@users.sourceforge.net>  Mon, 24 May 2021 22:08:47 +0300
-
 bluez (5.42+ubports5) xenial; urgency=medium
 
   * Fake the success of D-Bus activation, so that oFono HFP profile
