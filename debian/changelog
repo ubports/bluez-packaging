@@ -1,3 +1,15 @@
+bluez (5.53+ubports6+really5.41-0ubports1) xenial; urgency=medium
+
+  * Revert to 5.41 as shipped in the previous OTA. 5.53 has caused
+    multiple regressions discovered late in testing cycle.
+  * Mistakes and multiple reverts has led to a weird-looking upstream
+    part of the version. Next time an upstream upgrade happens in this
+    tree, please drop the '+ubports6+really5.41' from it, unless you're
+    upgrading to a version older than or equal to 5.53, in which case
+    only bump the version in '+really' part.
+
+ -- Florian Leeber <florian@ubports.com>  Fri, 18 Nov 2022 21:54:51 +0100
+
 bluez (5.42+ubports5) xenial; urgency=medium
 
   * Fake the success of D-Bus activation, so that oFono HFP profile
