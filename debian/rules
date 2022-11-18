@@ -23,8 +23,7 @@ CONFIGURE_FLAGS := \
 	--enable-sixaxis \
 	--enable-experimental \
 	--enable-deprecated \
-	--enable-testing \
-	--enable-phonebook-ebook
+	--enable-testing
 
 %:
 	dh $@ --with systemd,autoreconf
