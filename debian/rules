@@ -21,7 +21,8 @@ CONFIGURE_FLAGS := \
 	--enable-systemd \
 	--enable-threads \
 	--enable-sixaxis \
-	--enable-experimental
+	--enable-experimental \
+	--enable-phonebook-ebook
 
 %:
 	dh $@ --with systemd,autoreconf
