@@ -22,8 +22,6 @@ CONFIGURE_FLAGS := \
 	--enable-threads \
 	--enable-sixaxis \
 	--enable-experimental \
-	--enable-deprecated \
-	--enable-testing \
 	--enable-phonebook-ebook
 
 %:

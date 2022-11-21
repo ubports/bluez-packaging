@@ -1,2 +1,2 @@
-http://archive.ubuntu.com/ubuntu/pool/main/b/bluez/bluez_5.53.orig.tar.xz
-bluez_5.53+ubports5+really5.53.orig.tar.xz
+http://www.kernel.org/pub/linux/bluetooth/bluez-5.41.tar.xz
+bluez_5.53+ubports6+really5.41.orig.tar.xz

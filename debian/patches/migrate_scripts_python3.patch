@@ -27,10 +27,10 @@
  test/test-thermometer  |    6 ++----
  26 files changed, 45 insertions(+), 97 deletions(-)
 
-Index: bluez/test/list-devices
+Index: b/test/list-devices
 ===================================================================
---- bluez.orig/test/list-devices
-+++ bluez/test/list-devices
+--- a/test/list-devices
++++ b/test/list-devices
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -52,10 +52,10 @@ Index: bluez/test/list-devices
  	if "org.bluez.Adapter1" not in interfaces.keys():
  		continue
  
-Index: bluez/test/monitor-bluetooth
+Index: b/test/monitor-bluetooth
 ===================================================================
---- bluez.orig/test/monitor-bluetooth
-+++ bluez/test/monitor-bluetooth
+--- a/test/monitor-bluetooth
++++ b/test/monitor-bluetooth
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -85,10 +85,10 @@ Index: bluez/test/monitor-bluetooth
  			print("      %s = %s" % (name, value))
  
  def interfaces_removed(path, interfaces):
-Index: bluez/test/simple-agent
+Index: b/test/simple-agent
 ===================================================================
---- bluez.orig/test/simple-agent
-+++ bluez/test/simple-agent
+--- a/test/simple-agent
++++ b/test/simple-agent
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -97,10 +97,10 @@ Index: bluez/test/simple-agent
  
  from optparse import OptionParser
  import sys
-Index: bluez/test/simple-endpoint
+Index: b/test/simple-endpoint
 ===================================================================
---- bluez.orig/test/simple-endpoint
-+++ bluez/test/simple-endpoint
+--- a/test/simple-endpoint
++++ b/test/simple-endpoint
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -109,10 +109,10 @@ Index: bluez/test/simple-endpoint
  
  import sys
  import dbus
-Index: bluez/test/simple-player
+Index: b/test/simple-player
 ===================================================================
---- bluez.orig/test/simple-player
-+++ bluez/test/simple-player
+--- a/test/simple-player
++++ b/test/simple-player
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -121,10 +121,10 @@ Index: bluez/test/simple-player
  
  import os
  import sys
-Index: bluez/test/test-adapter
+Index: b/test/test-adapter
 ===================================================================
---- bluez.orig/test/test-adapter
-+++ bluez/test/test-adapter
+--- a/test/test-adapter
++++ b/test/test-adapter
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -142,10 +142,10 @@ Index: bluez/test/test-adapter
  			if "org.bluez.Adapter1" not in interfaces:
  				continue
  
-Index: bluez/test/test-device
+Index: b/test/test-device
 ===================================================================
---- bluez.orig/test/test-device
-+++ bluez/test/test-device
+--- a/test/test-device
++++ b/test/test-device
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -163,10 +163,10 @@ Index: bluez/test/test-device
  		if "org.bluez.Device1" not in interfaces:
  			continue
  		properties = interfaces["org.bluez.Device1"]
-Index: bluez/test/test-discovery
+Index: b/test/test-discovery
 ===================================================================
---- bluez.orig/test/test-discovery
-+++ bluez/test/test-discovery
+--- a/test/test-discovery
++++ b/test/test-discovery
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -213,7 +213,7 @@ Index: bluez/test/test-discovery
  	else:
  		devices[path] = changed
  
-@@ -152,7 +146,7 @@ if __name__ == '__main__':
+@@ -148,7 +142,7 @@ if __name__ == '__main__':
  	om = dbus.Interface(bus.get_object("org.bluez", "/"),
  				"org.freedesktop.DBus.ObjectManager")
  	objects = om.GetManagedObjects()
@@ -222,10 +222,10 @@ Index: bluez/test/test-discovery
  		if "org.bluez.Device1" in interfaces:
  			devices[path] = interfaces["org.bluez.Device1"]
  
-Index: bluez/test/test-health
+Index: b/test/test-health
 ===================================================================
---- bluez.orig/test/test-health
-+++ bluez/test/test-health
+--- a/test/test-health
++++ b/test/test-health
 @@ -1,6 +1,5 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
@@ -252,10 +252,10 @@ Index: bluez/test/test-health
  	if "org.bluez.Device1" not in interfaces:
  		continue
  	properties = interfaces["org.bluez.Device1"]
-Index: bluez/test/test-health-sink
+Index: b/test/test-health-sink
 ===================================================================
---- bluez.orig/test/test-health-sink
-+++ bluez/test/test-health-sink
+--- a/test/test-health-sink
++++ b/test/test-health-sink
 @@ -1,6 +1,5 @@
 -#!/usr/bin/python
 +#!/usr/bin/python3
@@ -282,10 +282,10 @@ Index: bluez/test/test-health-sink
  	if "org.bluez.Device1" not in interfaces:
  		continue
  	properties = interfaces["org.bluez.Device1"]
-Index: bluez/test/test-manager
+Index: b/test/test-manager
 ===================================================================
---- bluez.orig/test/test-manager
-+++ bluez/test/test-manager
+--- a/test/test-manager
++++ b/test/test-manager
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -294,10 +294,10 @@ Index: bluez/test/test-manager
  
  import dbus
  import dbus.mainloop.glib
-Index: bluez/test/test-nap
+Index: b/test/test-nap
 ===================================================================
---- bluez.orig/test/test-nap
-+++ bluez/test/test-nap
+--- a/test/test-nap
++++ b/test/test-nap
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -306,10 +306,10 @@ Index: bluez/test/test-nap
  
  from optparse import OptionParser, make_option
  import sys
-Index: bluez/test/test-network
+Index: b/test/test-network
 ===================================================================
---- bluez.orig/test/test-network
-+++ bluez/test/test-network
+--- a/test/test-network
++++ b/test/test-network
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -318,10 +318,31 @@ Index: bluez/test/test-network
  
  from optparse import OptionParser, make_option
  import sys
-Index: bluez/test/test-sap-server
+Index: b/test/test-proximity
 ===================================================================
---- bluez.orig/test/test-sap-server
-+++ bluez/test/test-sap-server
+--- a/test/test-proximity
++++ b/test/test-proximity
+@@ -1,6 +1,4 @@
+-#!/usr/bin/python
+-
+-from __future__ import absolute_import, print_function, unicode_literals
++#!/usr/bin/python3
+ 
+ '''
+ Proximity Monitor test script
+@@ -23,7 +21,7 @@ def properties_changed(interface, change
+ 	if interface != PROXIMITY_MONITOR_INTERFACE:
+ 		return
+ 
+-	for name, value in changed.iteritems():
++	for name, value in changed.items():
+ 		print("Property %s changed:  %s" % (name, str(value)))
+ 
+ if __name__ == "__main__":
+Index: b/test/test-sap-server
+===================================================================
+--- a/test/test-sap-server
++++ b/test/test-sap-server
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -330,10 +351,53 @@ Index: bluez/test/test-sap-server
  
  from sap_client import *
  import time
-Index: bluez/test/ftp-client
+Index: b/test/test-thermometer
 ===================================================================
---- bluez.orig/test/ftp-client
-+++ bluez/test/ftp-client
+--- a/test/test-thermometer
++++ b/test/test-thermometer
+@@ -1,6 +1,4 @@
+-#!/usr/bin/python
+-
+-from __future__ import absolute_import, print_function, unicode_literals
++#!/usr/bin/python3
+ 
+ '''
+ Thermometer test script
+@@ -40,7 +38,7 @@ class Watcher(dbus.service.Object):
+ def properties_changed(interface, changed, invalidated):
+ 	if interface != THERMOMETER_INTERFACE:
+ 		return
+-	for name, value in changed.iteritems():
++	for name, value in changed.items():
+ 		print("Property %s changed:  %s" % (name, str(value)))
+ 
+ if __name__ == "__main__":
+Index: b/test/bluezutils.py
+===================================================================
+--- a/test/bluezutils.py
++++ b/test/bluezutils.py
+@@ -15,7 +15,7 @@ def find_adapter(pattern=None):
+ 
+ def find_adapter_in_objects(objects, pattern=None):
+ 	bus = dbus.SystemBus()
+-	for path, ifaces in objects.iteritems():
++	for path, ifaces in objects.items():
+ 		adapter = ifaces.get(ADAPTER_INTERFACE)
+ 		if adapter is None:
+ 			continue
+@@ -35,7 +35,7 @@ def find_device_in_objects(objects, devi
+ 	if adapter_pattern:
+ 		adapter = find_adapter_in_objects(objects, adapter_pattern)
+ 		path_prefix = adapter.object_path
+-	for path, ifaces in objects.iteritems():
++	for path, ifaces in objects.items():
+ 		device = ifaces.get(DEVICE_INTERFACE)
+ 		if device is None:
+ 			continue
+Index: b/test/ftp-client
+===================================================================
+--- a/test/ftp-client
++++ b/test/ftp-client
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -342,10 +406,10 @@ Index: bluez/test/ftp-client
  
  from optparse import OptionParser
  import os.path
-Index: bluez/test/map-client
+Index: b/test/map-client
 ===================================================================
---- bluez.orig/test/map-client
-+++ bluez/test/map-client
+--- a/test/map-client
++++ b/test/map-client
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -363,10 +427,10 @@ Index: bluez/test/map-client
  
      for t in [unicode, str, long, int, float, bool]:
          if isinstance(x, t):
-Index: bluez/test/opp-client
+Index: b/test/opp-client
 ===================================================================
---- bluez.orig/test/opp-client
-+++ bluez/test/opp-client
+--- a/test/opp-client
++++ b/test/opp-client
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -375,10 +439,10 @@ Index: bluez/test/opp-client
  
  from optparse import OptionParser
  import os.path
-Index: bluez/test/pbap-client
+Index: b/test/pbap-client
 ===================================================================
---- bluez.orig/test/pbap-client
-+++ bluez/test/pbap-client
+--- a/test/pbap-client
++++ b/test/pbap-client
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -387,10 +451,46 @@ Index: bluez/test/pbap-client
  
  import os
  import sys
-Index: bluez/test/test-hfp
+Index: b/test/test-alert
 ===================================================================
---- bluez.orig/test/test-hfp
-+++ bluez/test/test-hfp
+--- a/test/test-alert
++++ b/test/test-alert
+@@ -1,6 +1,4 @@
+-#!/usr/bin/python
+-
+-from __future__ import absolute_import, print_function, unicode_literals
++#!/usr/bin/python3
+ 
+ import optparse
+ import os
+Index: b/test/test-cyclingspeed
+===================================================================
+--- a/test/test-cyclingspeed
++++ b/test/test-cyclingspeed
+@@ -1,6 +1,4 @@
+-#!/usr/bin/python
+-
+-from __future__ import absolute_import, print_function, unicode_literals
++#!/usr/bin/python3
+ 
+ '''
+ Cycling Speed and Cadence test script
+Index: b/test/test-heartrate
+===================================================================
+--- a/test/test-heartrate
++++ b/test/test-heartrate
+@@ -1,6 +1,4 @@
+-#!/usr/bin/python
+-
+-from __future__ import absolute_import, print_function, unicode_literals
++#!/usr/bin/python3
+ 
+ '''
+ Heart Rate Monitor test script
+Index: b/test/test-hfp
+===================================================================
+--- a/test/test-hfp
++++ b/test/test-hfp
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -
@@ -399,10 +499,10 @@ Index: bluez/test/test-hfp
  
  from optparse import OptionParser, make_option
  import os
-Index: bluez/test/test-profile
+Index: b/test/test-profile
 ===================================================================
---- bluez.orig/test/test-profile
-+++ bluez/test/test-profile
+--- a/test/test-profile
++++ b/test/test-profile
 @@ -1,6 +1,4 @@
 -#!/usr/bin/python
 -

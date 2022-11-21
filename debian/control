@@ -1,7 +1,7 @@
 Source: bluez
 Section: admin
 Priority: optional
-Maintainer: Ubuntu Bluetooth team <ubuntu-bluetooth@lists.ubuntu.com>
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 XSBC-Original-Maintainer: Debian Bluetooth Maintainers <pkg-bluetooth-maintainers@lists.alioth.debian.org>
 Uploaders: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 Build-Depends: debhelper (>= 9),
@@ -20,8 +20,8 @@ Build-Depends: debhelper (>= 9),
 	systemd,
 	dh-systemd (>= 1.5),
 	libebook1.2-dev (>= 3.12)
-Vcs-Git: https://git.launchpad.net/~bluetooth/bluez
-Vcs-Browser: https://git.launchpad.net/~bluetooth/bluez
+Vcs-Bzr: lp:~bluetooth/bluez/ubuntu
+Vcs-Browser: https://code.launchpad.net/~bluetooth/bluez/ubuntu
 Homepage: http://www.bluez.org
 Standards-Version: 3.9.6
 XS-Testsuite: autopkgtest

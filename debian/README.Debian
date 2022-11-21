@@ -5,6 +5,9 @@ The /dev/rfcomm* serial devices entries are automatically created for using
 RFCOMM with legacy applications -- see rfcomm(8).  Users must be in group
 'dialout' to have privileges to use these devices.
 
+You can edit /etc/bluetooth/rfcomm.conf to have some rfcomm devices bound
+automatically at boot time.
+
 If you wish to install PCMCIA card services support for your Bluetooth
 devices you should install the bluez-pcmcia-support package.
 

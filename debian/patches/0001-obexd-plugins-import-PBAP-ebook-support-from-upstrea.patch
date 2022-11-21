@@ -11,10 +11,11 @@ own.
  1 file changed, 708 insertions(+)
  create mode 100644 obexd/plugins/phonebook-ebook.c
 
-Index: bluez/obexd/plugins/phonebook-ebook.c
-===================================================================
+diff --git a/obexd/plugins/phonebook-ebook.c b/obexd/plugins/phonebook-ebook.c
+new file mode 100644
+index 0000000..c422585
 --- /dev/null
-+++ bluez/obexd/plugins/phonebook-ebook.c
++++ b/obexd/plugins/phonebook-ebook.c
 @@ -0,0 +1,708 @@
 +/*
 + *
@@ -724,3 +725,6 @@ Index: bluez/obexd/plugins/phonebook-ebook.c
 +
 +	return data;
 +}
+-- 
+2.5.0
+

@@ -4,14 +4,21 @@ bluetooth.conf.patch
 0001-obex-Use-GLib-helper-function-to-manipulate-paths.patch
 change_path_of_hogsuspend.patch
 migrate_scripts_python3.patch
-lp1759836.patch
 
 # This currently stays specific for Ubuntu
 0001-obexd-plugins-import-PBAP-ebook-support-from-upstrea.patch
 0001-obexd-plugins-port-ebook-support-to-the-latest-EDS.patch
 0002-hostname-handle-chassis-type-handset.patch
 
-# Security fix(es)
+# The following patches are submitted upstream and can be
+# dropped with one of the next releases
+0003-tools-mpris-proxy-allow-user-to-specify-different-mp.patch
+0004-obexd-enable-ebook-backend-conditionally.patch
+
+# Secirity fix(es)
+CVE-2017-1000250.patch
+CVE-2016-7837.patch
+CVE-2020-0556-pre1.patch
 CVE-2020-0556-1.patch
 CVE-2020-0556-2.patch
 CVE-2020-0556-3.patch
@@ -20,4 +27,3 @@ CVE-2020-0556-4.patch
 # UBports-specific patch
 broadcom-firmware.patch
 fake-dbus-activation.patch
-device-fixes-nissan-connect.patch

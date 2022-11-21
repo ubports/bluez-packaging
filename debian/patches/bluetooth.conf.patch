@@ -3,12 +3,12 @@ Forwarded: not-needed
 Origin: vendor
 Author: Nobuhiro Iwamatsu <iwamatsu@debian.org>
 
-Index: bluez/src/bluetooth.conf
+Index: bluez-5.33/src/bluetooth.conf
 ===================================================================
---- bluez.orig/src/bluetooth.conf
-+++ bluez/src/bluetooth.conf
-@@ -22,6 +22,11 @@
-     <allow send_interface="org.mpris.MediaPlayer2.Player"/>
+--- bluez-5.33.orig/src/bluetooth.conf
++++ bluez-5.33/src/bluetooth.conf
+@@ -24,6 +24,11 @@
+     <allow send_interface="org.freedesktop.DBus.Properties"/>
    </policy>
  
 +  <!-- allow users of bluetooth group to communicate -->
@@ -16,6 +16,6 @@ Index: bluez/src/bluetooth.conf
 +    <allow send_destination="org.bluez"/>
 +  </policy>
 +
-   <policy context="default">
+   <policy at_console="true">
      <allow send_destination="org.bluez"/>
    </policy>
